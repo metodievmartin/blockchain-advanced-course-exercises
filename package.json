@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-advanced-exercises",
+  "version": "1.0.0",
+  "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "forge test --ignored-error-codes=9302",
+    "generate-merkle": "node src/06_merkle_trees/js_scripts/generate-merkle.js",
+    "generate-merkle-oz": "node src/06_merkle_trees/js_scripts/generate-merkle-oz.js"
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.8",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.5.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
