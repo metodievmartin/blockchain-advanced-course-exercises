@@ -5,5 +5,6 @@ forge-std/=lib/forge-std/src/
 halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/
 openzeppelin-contracts/=lib/openzeppelin-contracts/
 openzeppelin-foundry-upgrades/=lib/openzeppelin-foundry-upgrades/src/
+chainlink/=lib/chainlink/
 
 @/=src/
