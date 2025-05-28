@@ -1,0 +1,14 @@
+{
+  "signature": "0x494b1a316dad004ae91958197eaab1723e7d49d57141e63d4035d497aa0acf9305b43417b722fa17c8d9895e8924663fc72376c91b5b2414596b56be5e2d87e51b",
+  "message": {
+    "employee": "0x4cd51E138D3cdF9f4E723F33DeF144D71E189b8E",
+    "period": "202505",
+    "usdAmount": "1100"
+  },
+  "domain": {
+    "name": "Payroll IT",
+    "version": "1",
+    "chainId": 11155111,
+    "verifyingContract": "0xA115aFAf44ab10A0E2a91E370affe6aFA312fD4e"
+  }
+}

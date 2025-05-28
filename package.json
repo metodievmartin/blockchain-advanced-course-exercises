@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -10,10 +11,14 @@
   "scripts": {
     "test": "forge test --ignored-error-codes=9302",
     "generate-merkle": "node src/06_merkle_trees/js_scripts/generate-merkle.js",
-    "generate-merkle-oz": "node src/06_merkle_trees/js_scripts/generate-merkle-oz.js"
+    "generate-merkle-oz": "node src/06_merkle_trees/js_scripts/generate-merkle-oz.js",
+    "generate-pay-stub:sepolia": "node src/exam-prep/js_scripts/generate-pay-stub.js sepolia",
+    "generate-pay-stub:local": "node src/exam-prep/js_scripts/generate-pay-stub.js local"
   },
   "dependencies": {
     "@openzeppelin/merkle-tree": "^1.0.8",
+    "dotenv": "^16.5.0",
+    "ethers": "^6.14.3",
     "keccak256": "^1.0.6",
     "merkletreejs": "^0.5.1"
   },
