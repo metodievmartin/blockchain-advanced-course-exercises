@@ -4,6 +4,10 @@ This repository contains practical exercises and projects completed during the S
 Each directory represents a different topic covered in the course, 
 demonstrating implementations of advanced blockchain development concepts.
 
+The corresponding course materials and labs can be found in this repository: [blockchain-advanced-course](https://github.com/metodievmartin/blockchain-advanced-course)
+
+> **Disclaimer**: These implementations are primarily for educational purposes. Many contracts are intentionally simplified to focus on specific learning objectives and concepts being taught in each module. They may not include all the security features or optimizations that would be required in production-ready code.
+
 ## Course Topics
 
 ### 01. Foundry Toolchain
@@ -15,7 +19,9 @@ demonstrating implementations of advanced blockchain development concepts.
   - King (Level 9): Preventing malicious contract interactions
   - Elevator (Level 11): Interface manipulation and state control
   - Preservation (Level 16): Storage layout and delegate calls
-  - Additional security implementations following best practices
+- Implementation of security best practices for smart contract development
+- Examples of common vulnerability mitigations
+- Additional security implementations following best practices
 
 ### 03. Gas Optimization Techniques
 - Implementation of gas-efficient smart contracts
@@ -27,12 +33,15 @@ demonstrating implementations of advanced blockchain development concepts.
 
 ### 05. Signatures and Advanced ERC-20 Standards
 - Implementation of EIP-712 typed structured data signatures
+- Demonstration of cryptographic signature verification
 - Advanced token functionalities beyond the basic ERC-20 standard
+- Permit functionality implementation (ERC-2612)
 
 ### 06. Merkle Trees and Advanced NFT Standards
 - `CharityTournament.sol`: Efficient participant verification using Merkle trees
 - JavaScript utilities for Merkle tree generation and proof validation
 - Advanced NFT implementations with extended functionality
+- Implementation of allowlist verification using Merkle proofs
 
 ### 07. Advanced Token Contracts
 - Implementation of tokens with advanced functionality
@@ -42,6 +51,7 @@ demonstrating implementations of advanced blockchain development concepts.
 - Implementation of transparent proxy pattern for contract upgradeability
 - VotingLogicV1 and VotingLogicV2 demonstrating contract evolution
 - Deployment scripts for both local and testnet environments
+- Initializable contracts with OpenZeppelin's upgradeable contracts
 
 ### 09. Oracles and External Data Feeds
 - Integration with Chainlink VRF for verifiable randomness in NFT minting
@@ -62,8 +72,10 @@ demonstrating implementations of advanced blockchain development concepts.
 
 ### Installation
 ```bash
-# Clone the repository
+# Clone the repository (HTTPS)
 git clone https://github.com/metodievmartin/blockchain-advanced-course-exercises.git
+# OR clone via SSH
+git clone git@github.com:metodievmartin/blockchain-advanced-course-exercises.git
 
 # Change to the project directory
 cd blockchain-advanced-course-exercises
@@ -82,9 +94,16 @@ cp .env.example .env
 ```
 
 Required environment variables:
-- `PRIVATE_KEY`: Your wallet's private key for deployments
+- `PRIVATE_KEY`: Your wallet's private key for general deployments
 - `SEPOLIA_RPC_URL`: RPC endpoint for Sepolia testnet
 - `ETHERSCAN_API_KEY`: For contract verification
+- `PROXY_ADDRESS`: Address of the deployed proxy contract (for upgrades)
+
+Additional variables for Payroll System:
+- `DIRECTOR_PRIVATE_KEY`: Private key of the director account (who signs pay stubs)
+- `DIRECTOR_ADDRESS`: Public address of the director account
+- `HR_MANAGER_PRIVATE_KEY`: Private key of the HR manager account (who creates Payroll instances)
+- `HR_MANAGER_ADDRESS`: Public address of the HR manager account
 
 ### Running Tests
 ```bash
@@ -92,13 +111,27 @@ Required environment variables:
 npm test
 # or
 forge test
+
+# Run tests with more verbosity
+forge test -vvv
+
+# Run specific test file
+forge test --match-path test/exam-prep/Payroll.t.sol
+
+# Run tests with gas reports
+forge test --gas-report
 ```
 
 ### Deployment Examples
+
+#### Local Deployment
 ```bash
 # Deploy to local Anvil network
 forge script script/exam-prep/DeployPayroll.s.sol --rpc-url anvil
+```
 
+#### Testnet Deployment
+```bash
 # Deploy to Sepolia testnet
 forge script script/exam-prep/DeployPayroll.s.sol --rpc-url sepolia --broadcast --verify
 ```
@@ -111,3 +144,29 @@ npm run generate-pay-stub:sepolia
 # Generate for local Anvil network
 npm run generate-pay-stub:local
 ```
+
+## Project Structure
+
+```
+blockchain-advanced-course-exercises/
+├── script/                 # Foundry deployment scripts
+│   ├── 08_upgradeability/    # Upgradeability scripts
+│   └── exam-prep/            # Exam preparation deployment scripts
+├── src/                    # Foundry smart contract source code
+│   ├── 01_foundry/           # Foundry basics
+│   ├── 02_security/          # Security patterns and Ethernaut solutions
+│   ├── 03_gas_optimisation/  # Gas optimization techniques
+│   ├── 05_signatures/        # Cryptographic signatures
+│   ├── 06_merkle_trees/      # Merkle tree implementations
+│   ├── 08_upgradeability/    # Upgradeability patterns
+│   ├── 09_oracles/           # Oracle integrations
+│   └── 10_defi/              # DeFi implementations
+├── test/                   # Foundry test files
+│   ├── 02_security/          # Security tests
+│   ├── 06_merkle_trees/      # Merkle tree tests
+│   ├── 08_upgradeability/    # Upgradeability tests
+│   ├── 09_oracles/           # Oracle tests
+│   └── exam-prep/            # Exam preparation tests
+├── deployments/            # JSON files with deployed contract addresses by networkand metadata
+└── js_scripts/             # JavaScript utilities
+    └── exam-prep/            # Pay stub generation scripts
