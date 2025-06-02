@@ -98,6 +98,7 @@ Required environment variables:
 - `SEPOLIA_RPC_URL`: RPC endpoint for Sepolia testnet
 - `ETHERSCAN_API_KEY`: For contract verification
 - `PROXY_ADDRESS`: Address of the deployed proxy contract (for upgrades)
+- `FORK_URL`: Mainnet RPC endpoint for forking (required for DeFi tests)
 
 Additional variables for Payroll System:
 - `DIRECTOR_PRIVATE_KEY`: Private key of the director account (who signs pay stubs)
@@ -166,6 +167,7 @@ blockchain-advanced-course-exercises/
 │   ├── 06_merkle_trees/      # Merkle tree tests
 │   ├── 08_upgradeability/    # Upgradeability tests
 │   ├── 09_oracles/           # Oracle tests
+│   ├── 10_defi/              # DeFi implementation tests (CPAMM and Uniswap V2 integration)
 │   └── exam-prep/            # Exam preparation tests
 ├── deployments/            # JSON files with deployed contract addresses by networkand metadata
 └── js_scripts/             # JavaScript utilities
